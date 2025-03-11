@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"aly/repl"
+	"fmt"
 	"os"
 	"os/user"
 )
