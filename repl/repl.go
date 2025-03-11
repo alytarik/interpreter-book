@@ -4,8 +4,8 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-	"myl/lexer"
-	"myl/parser"
+	"aly/lexer"
+	"aly/parser"
 )
 
 const PROMPT = ">>> "

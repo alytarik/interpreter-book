@@ -1,7 +1,7 @@
 package lexer
 
 import (
-	"myl/token"
+	"aly/token"
 )
 
 type Lexer struct {

@@ -2,8 +2,8 @@ package parser
 
 import (
 	"fmt"
-	"myl/ast"
-	"myl/lexer"
+	"aly/ast"
+	"aly/lexer"
 	"testing"
 )
 

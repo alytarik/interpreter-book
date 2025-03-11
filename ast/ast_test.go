@@ -1,7 +1,7 @@
 package ast
 
 import (
-	"myl/token"
+	"aly/token"
 	"testing"
 )
 
