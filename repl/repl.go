@@ -1,11 +1,12 @@
 package repl
 
 import (
+	"aly/evaluator"
+	"aly/lexer"
+	"aly/parser"
 	"bufio"
 	"fmt"
 	"io"
-	"aly/lexer"
-	"aly/parser"
 )
 
 const PROMPT = ">>> "
@@ -26,6 +27,23 @@ func Start(in io.Reader, out io.Writer) {
 
 		program := p.ParseProgram()
 
-		fmt.Println(program.String())
+		if len(p.Errors()) != 0 {
+			printParserErrors(out, p.Errors())
+			continue
+		}
+
+		evaluated := evaluator.Eval(program)
+		if evaluated != nil {
+			io.WriteString(out, evaluated.Inspect())
+			io.WriteString(out, "\n")
+		}
+
+	}
+}
+
+func printParserErrors(out io.Writer, errors []string) {
+	for _, e := range errors {
+		io.WriteString(out, e)
+		io.WriteString(out, "\n")
 	}
 }

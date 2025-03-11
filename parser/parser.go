@@ -1,10 +1,10 @@
 package parser
 
 import (
-	"fmt"
 	"aly/ast"
 	"aly/lexer"
 	"aly/token"
+	"fmt"
 	"strconv"
 )
 
@@ -206,7 +206,6 @@ func (p *Parser) parseGroupedExpression() ast.Expression {
 }
 
 func (p *Parser) parseIfExpression() ast.Expression {
-	fmt.Println("creating if")
 	expression := &ast.IfExpression{Token: p.curToken}
 
 	if !p.expectPeek(token.LPAREN) {
@@ -216,16 +215,13 @@ func (p *Parser) parseIfExpression() ast.Expression {
 	p.nextToken()
 	expression.Condition = p.parseExpression(LOWEST)
 
-	fmt.Printf("created if %s", p.peekToken.Literal)
 	if !p.expectPeek(token.RPAREN) {
 		return nil
 	}
-	fmt.Printf("created if")
 
 	if !p.expectPeek(token.LBRACE) {
 		return nil
 	}
-	fmt.Printf("created if")
 
 	expression.Consequence = p.parseBlockStatement()
 
@@ -238,7 +234,6 @@ func (p *Parser) parseIfExpression() ast.Expression {
 
 		expression.Alternative = p.parseBlockStatement()
 	}
-	fmt.Printf("created if %s", expression.String())
 
 	return expression
 }
