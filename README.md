@@ -13,7 +13,7 @@ Features:
 - [X] Integers and Booleans
 - [X] Arithmetics
 - [X] Conditionals
-- [ ] Functions
+- [X] Functions
 - [ ] Closures
 - [ ] Higher Order Functions
 - [ ] Strings, Arrays, Hashmaps
