@@ -1,6 +1,9 @@
 package evaluator
 
-import "aly/object"
+import (
+	"aly/object"
+	"fmt"
+)
 
 var builtins = map[string]*object.Builtin{
 	"len": {
@@ -34,7 +37,7 @@ var builtins = map[string]*object.Builtin{
 				return &object.Array{Elements: append(arg.Elements, args[1])}
 
 			default:
-				return newError("argument to `first` not supported, got %s",
+				return newError("argument to `push` not supported, got %s",
 					args[0].Type())
 			}
 		},
@@ -108,6 +111,15 @@ var builtins = map[string]*object.Builtin{
 				return newError("argument to `rest` not supported, got %s",
 					args[0].Type())
 			}
+		},
+	},
+	"puts": {
+		Fn: func(args ...object.Object) object.Object {
+			for _, arg := range args {
+				fmt.Println(arg.Inspect())
+			}
+			return NULL
+
 		},
 	},
 }
